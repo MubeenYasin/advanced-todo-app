@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='w-10/12 min-h-screen mx-auto flex justify-center '>
-        <div className='w-96 h-96 border-2 rounded-2xl mt-10 '>
+        <div className='w-96 h-96 mt-10 '>
         <SignUp />
         </div>
 

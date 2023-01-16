@@ -1,25 +1,45 @@
 import React, { useState } from 'react'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
 
-    const setData = () => {
+    const SubmitData = () => {
+        // console.log(email)
+        // console.log(password)
+
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
 
     }
 
+
     return (
         <div className='text-center flex flex-col gap-10'>
-            SignUp
+            <span>PLEASE SIGN UP</span>
 
-            <input type="email" placeholder='Email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <input type="password" placeholder='Pasword' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <input className='bg-transparent border rounded-xl border-red-300 p-3 '
+                type="email" placeholder='Email' name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
 
-            <button>Sin Up</button>
+            <input className='bg-transparent border rounded-xl border-red-300 p-3'
+                type="password" placeholder='Pasword' name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
 
-            <div>
-                Sign Up with Google
-            </div>
+            <button onClick={SubmitData}>Sin Up</button>
+
+            <button onClick={SubmitData}> Sign Up with Google</button>
+
+            <button onClick={SubmitData}>Sign Up with Facebook</button>
 
         </div>
     )
