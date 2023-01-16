@@ -15,9 +15,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='w-10/12 min-h-screen border-2 mx-auto flex justify-center content-center'>
+      <main className='w-10/12 min-h-screen mx-auto flex justify-center '>
+        <div className='w-96 h-96 border-2 rounded-2xl mt-10 '>
         <SignUp />
-        
+        </div>
+
       </main>
     </>
   )
